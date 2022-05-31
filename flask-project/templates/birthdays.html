@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% set active_page = 'birthdays' %}
+{% block title %} Birthdays {% endblock %}
+{% block content %}
+<div class="w-50">
+	<form method="post">
+		{{ form.csrf_token }}
+		<div class="mb-3">
+			<fieldset class="form-field">
+				{{ form.date.label(class="form-label") }}
+				{{ form.date(class="form-control") }}
+			</fieldset>
+		</div>
+		<div class="mb-3">
+			<fieldset class="form-field">
+				{{ form.number_of_results.label(class="form-label") }}
+				{{ form.number_of_results(class="form-control") }}
+			</fieldset>
+		</div>
+		{{ form.submit(class="btn btn-primary") }}
+	</form>
+</div>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Name</th>
+			<th scope="col">Birth year</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		{% for item in a %}
+		<tr>
+			<td class="align-middle">{{ loop.index0 +1 }}</td>
+			<td class="align-middle"> <img src={{ item['thumbnail'] }} class="img-thumbnail" style="max-height:50px;max-width:50px;"> {{item['text']}}</td>
+			<td class="align-middle">{{ item['year']}}</td>
+		</tr>
+
+		{% endfor %}
+
+	</tbody>
+</table>
+ {% endblock %}
+# copy table code from home and change it business=item - done
+

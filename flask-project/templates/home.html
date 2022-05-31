@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% set active_page = 'home' %}
+{% block title %} Home {% endblock %}
+{% block content %}
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">People with the same birthday</th>
+			<th scope="col">Birth year</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		{% for business in myData %}
+		<tr>
+			<td class="align-middle">{{ loop.index0 +1 }}</td>
+			<td class="align-middle"> <img src={{ business['image_url'] }} class="img-thumbnail" style="max-height:50px;max-width:50px;"> {{business['name']}}</td>
+			<td class="align-middle">{{ business['rating']}}</td>
+		</tr>
+
+		{% endfor %}
+
+	</tbody>
+</table>
+ {% endblock %}
+# item [] thumbnail for text
+# for item in myData
+# td img src={{ item['thumbnail'] }}
